@@ -1,0 +1,149 @@
+[
+  {
+    "id": "service-1",
+    "title": "CUIDADO ADULTO",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Home Medical es una de las empresas de atención domiciliaria que más experiencia tiene en el mercado en el manejo del paciente adulto y que pone a su disposición los más altos estándares de calidad, competencias técnicas y apoyo tecnológico al servicio de sus pacientes facilitando su recuperación y mejorando su calidad de vida."
+      }
+    ]
+  },
+  {
+    "id": "service-2",
+    "title": "SERVICIOS DOMICILIARIOS",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Entregamos servicios de hospitalización de alta, mediana y baja complejidad, para los requerimientos específicos de cada paciente."
+      }
+    ]
+  },
+  {
+    "id": "service-3",
+    "title": "Procedimientos Clínicos",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Nuestro equipo multidisciplinario con conocimientos y experiencia, pone a su disposición los siguientes procedimientos:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Neurorehabilitación pediátrica.",
+          "Rehabilitación motora y respiratoria.",
+          "Terapia ventilatoria mecánica.",
+          "Monitorización multiparámetro."
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "Telemedicina"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Oxigenoterapia.",
+          "Cuidado de ostomía.",
+          "Hidratación y alimentación parenteral.",
+          "Tratamiento endovenoso.",
+          "Exámenes de laboratorio.",
+          "Asistencia en actividades de la vida diaria.",
+          "Atención de pacientes en la clínica.",
+          "Turnos de 24 y de 12 horas en cuidados domiciliarios.",
+          "Fonoaudiología, Kinesioterapia, Psicología y Rehabilitación."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "service-4",
+    "title": "RESCATE MÉDICO",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Frente a una emergencia o urgencia, Home Medical cuenta con el Servicio de Rescate Médico de HELP que se conecta con usted al instante que nos llama, enviándole un móvil al lugar del incidente con un doctor(a), enfermero(a) y un paramédico."
+      },
+      {
+        "type": "paragraph",
+        "text": "En caso de riesgo vital, una enfermera lo apoyará telefónicamente dándole las instrucciones mientras llega el móvil."
+      },
+      {
+        "type": "paragraph",
+        "text": "Contamos con más de 450 especialistas en Rescate Médico."
+      }
+    ]
+  },
+  {
+    "id": "service-5",
+    "title": "ASISTENCIA TELEFÓNICA",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "En caso de consulta, Home Medical cuenta con asistencia telefónica de enfermería las 24 horas del día y los 365 días del año."
+      },
+      {
+        "type": "paragraph",
+        "text": "Lo asesorarán y resolverán sus preguntas de salud."
+      },
+      {
+        "type": "paragraph",
+        "text": "Teléfono: 22 631 02 00"
+      }
+    ]
+  },
+  {
+    "id": "service-6",
+    "title": "NUTRICIÓN CLÍNICA",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "En Home Medical, tenemos a disposición un departamento de nutrición."
+      }
+    ]
+  },
+  {
+    "id": "service-7",
+    "title": "EQUIPO TRATANTE",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Es un modelo de trabajo donde se define una enfermera y un kinesiólogo para cada paciente a objeto de analizar y planificar junto al médico tratante y familia, las técnicas de manejo del paciente que sean más efectivas para su recuperación."
+      }
+    ]
+  },
+  {
+    "id": "service-8",
+    "title": "Monitoreo clínico",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Home Medical en alianza con Help S.A., pone a disposición del paciente la mayor y mejor tecnología para acceder y manejar la información clínica del paciente a través de una Central de Enfermería que en permanente comunicación con la Ficha Electrónica que se instala en cada domicilio, de esta forma el equipo de salud está monitoreando clínicamente al paciente las 24 horas del día."
+      }
+    ]
+  },
+  {
+    "id": "service-9",
+    "title": "Cuidado continuo",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "El compromiso de Home Medical es que desde el minuto que un paciente ingresa a nuestros servicios, independiente de la complejidad o estado en que éste se encuentra, disponemos las 24 horas del mejor recurso humano para atenderlo y toda la tecnología al servicio de sus requerimientos."
+      }
+    ]
+  },
+  {
+    "id": "service-10",
+    "title": "Cuidado pediátrico",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Cada niño necesita un cuidado único y personalizado. Es por esto que ponemos a su disposición a Medical Hilfe, nuestra unidad de atención al paciente pediátrico con los más altos estándares de calidad, competencias técnicas y apoyo tecnológico al servicio del paciente, facilitando su recuperación y mejorando su calidad de vida."
+      },
+      {
+        "type": "paragraph",
+        "text": "Medical Hilfe"
+      }
+    ]
+  }
+]
