@@ -1,0 +1,33 @@
+.page { background: linear-gradient(150deg, var(--color-surface-green), #fff 68%); padding: clamp(2rem, 6vw, 5rem) var(--section-gutter); color: var(--color-secondary); }
+.shell { max-width: 76rem; margin-inline: auto; }
+.back { display: inline-flex; min-height: 44px; align-items: center; gap: .6rem; color: var(--color-primary-strong); font-weight: 650; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: center; gap: clamp(1.5rem, 4vw, 4rem); margin: clamp(1rem, 4vw, 3rem) 0; }
+.eyebrow { color: var(--color-primary-strong); font-size: .78rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin: 0 0 .85rem; }
+.hero h1 { font-size: clamp(2.25rem, 5vw, 4.8rem); font-weight: 740; letter-spacing: -.055em; line-height: 1.03; margin: 0; }
+.hero h1 span { display: block; color: var(--color-primary-strong); }
+.hero p:not(.eyebrow) { font-size: 1.08rem; line-height: 1.6; margin: 1rem 0 0; }
+.portal { border-radius: 1.25rem; padding: clamp(1.3rem, 3vw, 2rem); color: #fff; background: linear-gradient(135deg, var(--color-primary-strong), var(--color-primary)); box-shadow: 0 14px 32px #0c53412b; }
+.portal > svg { margin-bottom: .8rem; }
+.portal h2, .card h2, .documents h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.2; letter-spacing: -.025em; font-weight: 700; margin: 0; }
+.primary { display: inline-flex; justify-content: center; align-items: center; gap: .65rem; min-height: 48px; padding: .7rem 1.15rem; margin-top: 1.15rem; border-radius: 999px; color: var(--color-primary-strong); background: #fff; font-weight: 700; }
+.primary:hover { background: var(--color-surface-green-accent); }
+.primary svg, .back svg, .channel svg, .document svg { flex-shrink: 0; }
+.grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 1rem; }
+.card, .document { background: #fff; border: 1px solid var(--color-border); border-radius: var(--radius-surface); }
+.card { padding: clamp(1.1rem, 3vw, 2rem); }
+.card p { line-height: 1.65; margin: .75rem 0 0; }
+.card h3 { margin: 0; font-weight: 700; font-size: 1rem; }
+.note { border-left: 3px solid var(--color-primary-strong); border-radius: 0 .65rem .65rem 0; background: var(--color-surface-green); padding: .9rem 1rem; margin-top: 1.15rem; }
+.channel { display: flex; gap: .7rem; margin-top: 1.25rem; }
+.channel > svg, .document > svg { color: var(--color-primary-strong); }
+.channel a, .contact a { color: var(--color-primary-strong); text-decoration: underline; text-underline-offset: .2em; overflow-wrap: anywhere; }
+.card .contact { border-top: 1px solid var(--color-border); padding-top: 1rem; margin-top: 1.35rem; }
+.documents { margin-top: clamp(2rem, 5vw, 3.75rem); }
+.documents ul { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .8rem; list-style: none; padding: 0; margin: 1rem 0 0; }
+.document { display: flex; align-items: center; gap: .75rem; padding: 1rem; height: 100%; font-weight: 650; }
+.document > span { flex: 1; min-width: 0; }
+.document small { display: block; margin-top: .25rem; color: var(--color-primary-strong); font-weight: 500; }
+.document:hover { background: var(--color-surface-green-soft); border-color: #a8cfc0; }
+.page a:focus-visible { outline: 2px solid var(--color-primary-strong); outline-offset: 4px; border-radius: .35rem; }
+.portal a:focus-visible { outline-color: #fff; }
+@media (max-width: 760px) { .hero,.grid,.documents ul { grid-template-columns: minmax(0,1fr); } }

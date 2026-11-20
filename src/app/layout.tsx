@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { AnimationReplay } from "@/components/animation-replay";
+import { SiteFooter } from "@/components/sections/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { SocialLinks } from "@/components/social-links";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,7 +22,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es"
       className={`${geistSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+        <AnimationReplay />
+        <SocialLinks />
+      </body>
     </html>
   );
 }

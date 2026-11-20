@@ -145,5 +145,97 @@
         "text": "Medical Hilfe"
       }
     ]
+  },
+  {
+    "id": "e-health",
+    "title": "E-health",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Durante la hospitalización domiciliaria, el equipo de salud utiliza una ficha clínica electrónica para consultar y actualizar la información del paciente desde su domicilio."
+      },
+      {
+        "type": "paragraph",
+        "text": "La ficha se conecta con la Central de Enfermería de Home Medical Clinic, que, en alianza con Help S.A., apoya el monitoreo clínico a distancia las 24 horas del día."
+      }
+    ]
+  },
+  {
+    "id": "client-hospitalizacion",
+    "title": "Hospitalización domiciliaria",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Trasladamos al hogar los cuidados propios de una hospitalización. Para esto, contamos con un equipo multidisciplinario, monitoreo permanente y un plan personalizado para cada paciente."
+      },
+      {
+        "type": "paragraph",
+        "text": "Este servicio está enfocado en aquellas personas clínicamente estables que requieran continuidad de cuidados médicos, pero que no necesitan permanecer en una cama hospitalaria. Incluye pacientes postquirúrgicos, respiratorios, neurológicos o con enfermedades crónicas descompensadas."
+      }
+    ]
+  },
+  {
+    "id": "client-rehabilitacion",
+    "title": "Rehabilitación",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Contamos con servicios de kinesiología, terapia ocupacional y fonoaudiología en el domicilio, orientados a recuperar funcionalidad e independencia de pacientes con secuelas neurológicas, traumatológicas, musculoesqueléticas, respiratorias o postquirúrgicas, que presentan dificultades para trasladarse al lugar de su terapia de rehabilitación, o que prefieran realizarlas en la comodidad de su hogar."
+      }
+    ]
+  },
+  {
+    "id": "client-curaciones",
+    "title": "Curaciones",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Evaluamos y tratamos heridas agudas o crónicas, lesiones por presión, heridas quirúrgicas, úlceras vasculares, pie diabético u otras condiciones que requieren manejo especializado. Para esto, contamos con protocolos y materiales que favorecen la cicatrización."
+      }
+    ]
+  },
+  {
+    "id": "client-paliativos",
+    "title": "Cuidados paliativos",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Acompañamos por medio del control de síntomas, manejo del dolor, apoyo emocional y educación, procurando siempre el bienestar, comodidad y dignidad del paciente con enfermedades avanzadas o terminales."
+      }
+    ]
+  },
+  {
+    "id": "client-medicamentos",
+    "title": "Administración de medicamentos y antibióticos",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Este servicio está diseñado para pacientes que requieren tratamientos intravenosos, subcutáneos o intramusculares prolongados, especialmente terapias antibióticas y medicamentos de alta complejidad. Para esto, aseguramos una administración segura en casa, monitoreando la respuesta clínica y la adherencia al tratamiento."
+      }
+    ]
+  },
+  {
+    "id": "client-alimentacion",
+    "title": "Alimentación enteral y parenteral",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "Gestionamos de manera integral la terapia nutricional domiciliaria para pacientes con dificultades para alimentarse por vía oral o que requieren soporte nutricional especializado debido a patologías neurológicas, oncológicas, gastrointestinales u otras condiciones complejas."
+      }
+    ]
+  },
+  {
+    "id": "client-cuidados",
+    "title": "Cuidados a domicilio",
+    "blocks": [
+      {
+        "type": "paragraph",
+        "text": "A través de TENS (Técnico de Enfermería de Nivel Superior) o personal capacitado, apoyamos la supervisión clínica y cuidados básicos en el hogar, para pacientes con alta dependencia funcional o enfermedades crónicas avanzadas, que necesiten ayuda para permanecer de forma segura en su domicilio."
+      },
+      {
+        "type": "paragraph",
+        "text": "Servicio 100% particular."
+      }
+    ]
   }
 ]

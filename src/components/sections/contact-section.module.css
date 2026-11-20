@@ -1,129 +1,110 @@
 .section {
-  padding: clamp(3.5rem, 7vw, 7rem) var(--section-gutter);
-  background: #fff;
-  scroll-margin-top: 6rem;
-}
-.card {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
-  max-width: 1200px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: var(--radius-surface);
-  box-shadow: 0 22px 60px #23464f19;
-  background: #fff;
-}
-.intro {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  min-height: 650px;
-  background: var(--color-primary);
-  color: #fff;
+  overflow: clip;
+  scroll-margin-top: 6rem;
+  padding: clamp(2.75rem, 6vw, 6rem) var(--section-gutter);
+  background: var(--color-surface-green);
+  color: var(--color-secondary);
 }
-.intro::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  width: 24rem;
-  height: 24rem;
+.section::before, .section::after { content: ""; position: absolute; pointer-events: none; z-index: -1; }
+.section::before {
+  inset: 0;
+  background: linear-gradient(105deg, #ffffff 18%, #f6faf9f0 46%, color-mix(in srgb, var(--color-surface-green) 66%, transparent) 72%, color-mix(in srgb, var(--color-surface-green-accent) 47%, transparent)),
+    url("/control-clinico-en-casa.webp") 85% 45% / cover;
+}
+.section::after {
+  width: 55rem;
+  height: 32rem;
+  left: -20rem;
+  bottom: -26rem;
   border-radius: 50%;
-  background: #ffffff0d;
-  top: -17rem;
-  right: -8rem;
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  box-shadow: 51rem -35rem 0 -4rem color-mix(in srgb, var(--color-primary) 9%, transparent);
 }
-.copy { position: relative; padding: clamp(2rem, 4vw, 3.5rem); }
-.eyebrow {
-  display: flex;
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.12fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  max-width: 1300px;
+  margin: auto;
   align-items: center;
-  gap: 1rem;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-  font-size: .76rem;
-  font-weight: 650;
-  margin: 0 0 1.9rem;
 }
-.eyebrow::after { content: ""; width: 3rem; height: 1px; background: #ffffff70; }
-.copy h2 {
-  text-transform: uppercase;
-  font-size: clamp(2rem, 3.4vw, 3.25rem);
-  font-weight: 750;
-  line-height: 1.04;
-  letter-spacing: -.055em;
-  margin: 0;
+.copy, .form { min-width: 0; }
+.eyebrow { display: flex; align-items: center; gap: .9rem; margin: 0 0 1.6rem; text-transform: uppercase; font-size: .78rem; font-weight: 650; letter-spacing: .16em; }
+.eyebrow::after { content: ""; width: 3.75rem; height: 2px; background: var(--color-primary); }
+.copy h2 { font-size: clamp(2.6rem, 5.2vw, 5rem); font-weight: 450; line-height: 1; letter-spacing: -.065em; margin: 0; }
+.copy h2 strong { display: block; color: var(--color-primary-strong); font-weight: 750; }
+.intro { font-size: clamp(1.06rem, 1.6vw, 1.33rem); line-height: 1.5; color: var(--color-secondary); margin: 1.3rem 0 1.75rem; max-width: 29rem; }
+.brand { border-top: 1px solid var(--color-border); padding-top: 1.15rem; max-width: 29rem; }
+.brand img { width: 10.25rem; height: auto; }
+.brand p { margin: .75rem 0 0; font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; }
+.form {
+  padding: clamp(1.1rem, 3.4vw, 3rem);
+  background: #ffffffba;
+  backdrop-filter: blur(19px);
+  border: 2px solid #afc9c1;
+  border-radius: 1.35rem;
+  box-shadow: 0 20px 48px rgb(19 61 53 / 18%), 0 4px 12px rgb(19 61 53 / 8%);
 }
-.copy > p:last-child { font-size: 1rem; line-height: 1.55; margin: 1.2rem 0 0; max-width: 20rem; }
-.photo { position: absolute; inset: 33% 0 0; z-index: -1; }
-.photo img { object-fit: cover; object-position: 61% center; }
-.photo::after {
-  content: "";
-  position: absolute;
-  inset: -1px 0 0;
-  background: linear-gradient(180deg, #009b70 0%, #009b70df 9%, #009b7020 42%, transparent 65%);
-}
-.form { align-self: center; padding: clamp(1.5rem, 4vw, 3.5rem); min-width: 0; }
-.grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.4rem 1rem; }
-.field { display: grid; gap: .5rem; min-width: 0; font-size: .85rem; font-weight: 650; color: var(--color-secondary); }
+.form h3 { color: #123751; font-size: clamp(1.65rem, 2.75vw, 2.15rem); font-weight: 750; line-height: 1.12; letter-spacing: -.045em; margin: 0; }
+.subtitle { color: var(--color-muted); margin: .55rem 0 1.35rem; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; align-items: start; }
+.field { display: grid; gap: .3rem; color: var(--color-secondary); font-weight: 600; font-size: .83rem; min-width: 0; }
 .wide { grid-column: 1 / -1; }
 .field input, .field select, .field textarea {
-  width: 100%;
   min-width: 0;
-  color: var(--color-secondary);
-  border: 1px solid var(--color-border);
-  background: #fff;
-  border-radius: .8rem;
-  font: inherit;
-  font-weight: 400;
-  font-size: 1rem;
-  padding: .9rem 1rem;
-}
-.field input, .field select { height: 3.35rem; }
-.field textarea { resize: vertical; min-height: 9rem; }
-.field select { appearance: none; padding-right: 2.4rem; font-size: .86rem; text-overflow: ellipsis; }
-.select { position: relative; min-width: 0; }
-.select svg { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); pointer-events: none; }
-.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
   width: 100%;
-  min-height: 3.65rem;
-  margin-top: 1.5rem;
-  padding: .8rem 1.5rem;
-  border: 0;
-  border-radius: var(--radius-control);
-  background: var(--color-primary);
-  color: #fff;
+  min-height: 3.15rem;
+  padding: .7rem .85rem;
+  border: 1px solid #9eafbd;
+  border-radius: .8rem;
+  color: var(--color-secondary);
+  background: #ffffff9c;
   font-size: 1rem;
-  font-weight: 750;
-  cursor: pointer;
-  transition: background .16s;
+  font-weight: 400;
+  transition: background-color .2s, box-shadow .2s;
 }
-.button:hover { background: var(--color-primary-strong); }
+.field textarea { resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--color-primary-strong); outline-offset: 2px; background: #fff; }
+.field [aria-invalid="true"] { border-color: var(--color-error, #b42318); }
+.error { color: #a51d24; }
+.help, .preview, .notice, .captchaPlaceholder { font-size: .85rem; line-height: 1.5; color: #405970; }
+.help { margin: .65rem 0 1rem; }
+.captcha { margin: 0 0 1rem; }
+.captchaPlaceholder { margin: 0 0 1rem; padding: .7rem .85rem; background: #fff8; border: 1px dashed #9eafbd; border-radius: .7rem; }
+.button { display: flex; justify-content: center; align-items: center; gap: .85rem; width: 100%; min-height: 3.45rem; padding: .65rem 1rem; color: #fff; background: var(--color-primary-strong); border: 0; border-radius: 999px; font-weight: 650; transition: background .2s, box-shadow .2s, transform .2s; }
+.button:hover:not(:disabled) { background: var(--color-primary-strong); box-shadow: 0 8px 18px color-mix(in srgb, var(--color-primary) 25%, transparent); transform: translateY(-2px); }
 .button:focus-visible { outline: 2px solid var(--color-primary-strong); outline-offset: 4px; }
-.notice { color: var(--color-muted); font-size: .85rem; line-height: 1.5; margin: 1rem 0 0; }
-.notice:empty { display: none; }
-@media (max-width: 900px) and (min-width: 701px) {
-  .card { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
-  .copy { padding: 2rem 1.4rem; }
-  .copy h2 { font-size: 2rem; }
-  .form { padding: 2rem 1.4rem; }
+.button:disabled { opacity: .65; cursor: wait; }
+.preview, .notice { text-align: center; margin: .85rem 0 0; }
+.notice:empty { margin: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .copy, .form { animation: appear .55s cubic-bezier(.2,.75,.27,1) both; }
+  .form { animation-delay: .1s; }
+  @keyframes appear { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 }
-@media (max-width: 700px) {
-  .section { padding: 3.5rem 1.25rem; }
-  .card { grid-template-columns: minmax(0, 1fr); }
-  .intro { min-height: 370px; }
-  .copy { padding: 2rem; }
-  .copy h2 { font-size: clamp(1.9rem, 8vw, 2.6rem); }
-  .copy > p:last-child { max-width: 14rem; font-size: .94rem; }
-  .eyebrow { margin-bottom: 1.3rem; }
-  .photo { inset: 5% 0 0 25%; }
-  .photo img { object-position: 58% center; }
-  .photo::after { background: linear-gradient(90deg, #009b70 0%, #009b7080 35%, #009b7000 75%), linear-gradient(180deg, #009b70, #009b7000 65%); }
-  .form { padding: 1.75rem 1.25rem; }
-  .grid { grid-template-columns: minmax(0, 1fr); gap: 1.15rem; }
-  .wide { grid-column: auto; }
-  .field select { font-size: 1rem; }
+@media (prefers-reduced-transparency: reduce) { .form { background: #fff; backdrop-filter: none; } }
+@media (max-width: 880px) {
+  .layout { grid-template-columns: minmax(0, 1fr); max-width: 42rem; }
+  .section::before { background: linear-gradient(180deg, #ffffffef 0%, color-mix(in srgb, var(--color-surface-green-soft) 90%, transparent) 65%, color-mix(in srgb, var(--color-surface-green) 90%, transparent)), url("/control-clinico-en-casa.webp") 61% top / auto 38% no-repeat; }
+}
+@media (max-width: 540px) {
+  .section { padding-inline: 1rem; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .eyebrow { margin-bottom: 1rem; }
+}
+
+.modeList { display: grid; gap: .65rem; margin: 0 0 1.65rem; max-width: 29rem; }
+.modeList button { display: flex; gap: .8rem; align-items: center; padding: .8rem .95rem; width: 100%; min-height: 3.25rem; text-align: left; background: #ffffffc9; color: var(--color-secondary); border: 1px solid #b6c9c6; border-radius: .85rem; font-weight: 650; transition: background .2s, color .2s, border-color .2s; }
+.modeList button svg { flex-shrink: 0; }
+.modeList button svg:last-child { margin-left: auto; }
+.modeList button:hover { border-color: var(--color-primary-strong); }
+.modeList button[aria-pressed="true"] { background: var(--color-primary-strong); border-color: var(--color-primary-strong); color: #fff; }
+.modeList button:focus-visible { outline: 2px solid var(--color-primary-strong); outline-offset: 3px; }
+.modeList button:disabled { cursor: wait; }
+.field input[type="file"] { padding: .45rem; overflow: hidden; font-size: .88rem; }
+.field input::file-selector-button { color: var(--color-primary-strong); background: var(--color-surface-green-accent); border: 0; border-radius: .5rem; padding: .45rem .6rem; margin-right: .45rem; font: inherit; cursor: pointer; }
+@media (prefers-reduced-motion: no-preference) {
+  .modePanel { animation: appear .28s ease-out both; }
 }

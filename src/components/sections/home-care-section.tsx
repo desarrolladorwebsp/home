@@ -1,33 +1,27 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import {
-  AppleLogo, ArrowRight, Baby, ClipboardText, Heart,
-  Heartbeat, Laptop, PersonSimple, PhoneCall, Truck, UsersThree, X,
-} from "@phosphor-icons/react";
+import { ArrowRight, X } from "@phosphor-icons/react";
 import sourceContent from "./home-care-content.json";
 import styles from "./home-care-section.module.css";
 
 const cards = [
-  { id: "service-7", title: "Equipo tratante", description: "Profesionales que acompañan al paciente y su familia.", Icon: UsersThree },
-  { id: "service-1", title: "Cuidado adulto", description: "Atención adaptada a cada necesidad.", Icon: PersonSimple },
-  { id: "service-10", title: "Cuidado pediátrico", description: "Cuidado especializado para los más pequeños.", Icon: Baby },
-  { id: "service-3", title: "Procedimientos clínicos", description: "Prestaciones clínicas en la comodidad del hogar.", Icon: ClipboardText },
-  { id: "service-6", title: "Nutrición clínica", description: "Apoyo nutricional como parte del cuidado.", Icon: AppleLogo },
-  { id: "service-5", title: "Asistencia telefónica", description: "Orientación de enfermería a distancia.", Icon: PhoneCall },
+  { id: "client-hospitalizacion", title: "Hospitalización domiciliaria", description: "Cuidados hospitalarios en el hogar." },
+  { id: "client-rehabilitacion", title: "Rehabilitación", description: "Recupera funcionalidad e independencia." },
+  { id: "client-curaciones", title: "Curaciones", description: "Tratamiento especializado de heridas." },
+  { id: "client-paliativos", title: "Cuidados paliativos", description: "Bienestar, comodidad y dignidad." },
+  { id: "client-medicamentos", title: "Administración de medicamentos y antibióticos", description: "Tratamientos seguros en casa." },
+  { id: "client-alimentacion", title: "Alimentación enteral y parenteral", description: "Soporte nutricional especializado." },
+  { id: "client-cuidados", title: "Cuidados a domicilio", description: "Apoyo para permanecer de forma segura en casa." },
 ];
 
-const support = [
-  { id: "service-8", title: "Monitoreo clínico", Icon: Heartbeat },
-  { id: "service-9", title: "Cuidado continuo", Icon: Heart },
-  { id: "service-4", title: "Rescate médico", Icon: Truck },
-];
-
-export function HomeCareSection() {
+export function HomeCareSection({ preview = false }: { preview?: boolean }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const selected = sourceContent.find((service) => service.id === selectedId);
+  const visibleCards = preview ? cards.slice(0, 3) : cards;
 
   useEffect(() => {
     if (selectedId && dialog.current && !dialog.current.open) {
@@ -35,55 +29,82 @@ export function HomeCareSection() {
     }
   }, [selectedId]);
 
+
   return (
     <div id="servicios" className={styles.anchor}>
       <section id="atencion" className={styles.section} aria-labelledby="home-care-title">
         <div className={styles.container}>
-          <div className={styles.header}>
-            <div className={styles.photo} aria-hidden="true">
-              <Image src="/hero-home-care.png" alt="" fill sizes="(max-width: 700px) 100vw, 60vw" />
+          {preview ? (
+            <div className={styles.header}>
+              <div className={styles.photo} aria-hidden="true">
+                <Image src="/rehabilitacion-en-casa.webp" alt="" fill sizes="(max-width: 700px) 100vw, 60vw" />
+              </div>
+              <div className={styles.intro}>
+                <p className={styles.eyebrow}>Nuestros servicios</p>
+                <h2 id="home-care-title"><span>Atención clínica en casa,</span>adaptada a cada paciente</h2>
+                <p className={styles.description}>Conoce algunas de las prestaciones que ofrecemos para continuar el tratamiento, la recuperación o la rehabilitación en casa.</p>
+              </div>
             </div>
-            <div className={styles.intro}>
-              <p className={styles.eyebrow}>Atención domiciliaria</p>
-              <h2 id="home-care-title"><span>Cuidado integral,</span>en tu hogar</h2>
-              <p className={styles.description}>Un equipo conectado para acompañarte en cada etapa del cuidado.</p>
-              <button className={styles.overview} type="button" onClick={() => setSelectedId("service-2")} aria-haspopup="dialog">
-                Hospitalización de alta, mediana y baja complejidad <ArrowRight size={18} aria-hidden="true" />
-              </button>
-            </div>
-          </div>
+          ) : <h2 id="home-care-title" className="sr-only">Prestaciones de atención domiciliaria</h2>}
 
           <div className={styles.grid}>
-            {cards.map(({ id, title, description, Icon }) => (
-              <article className={styles.card} key={id}>
-                <Icon className={styles.icon} size={52} weight="light" aria-hidden="true" />
-                <div className={styles.cardContent}>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                  <button type="button" className={styles.more} onClick={() => setSelectedId(id)} aria-label={`Conocer más: ${title}`} aria-haspopup="dialog">
-                    Conocer más <ArrowRight size={17} aria-hidden="true" />
-                  </button>
-                </div>
-              </article>
-            ))}
+            {visibleCards.map(({ id, title, description }) => {
+              const anchor = id.replace(/^client-/, "");
+              return (
+                <article id={preview ? undefined : anchor} data-replay className={styles.card} key={id}>
+                  <div className={styles.cardPhoto}>
+                    <Image
+                      src={`/servicios/${anchor}.webp`}
+                      alt=""
+                      fill
+                      sizes="(max-width: 600px) 34vw, (max-width: 1050px) 17vw, 160px"
+                    />
+                  </div>
+                  <div className={styles.cardContent}>
+                    <div className={styles.titleRow}>
+                      <h3>{title}</h3>
+                      {anchor === "cuidados" && <span className={styles.badge}>Servicio 100% particular</span>}
+                    </div>
+                    <p>{description}</p>
+                    {preview ? (
+                      <Link className={styles.more} href={`/servicios#${anchor}`} aria-label={`Ver servicio: ${title}`}>
+                        Ver servicio <ArrowRight size={17} aria-hidden="true" />
+                      </Link>
+                    ) : (
+                      <button type="button" className={styles.more} onClick={() => setSelectedId(id)} aria-label={`Conocer más: ${title}`} aria-haspopup="dialog">
+                        Conocer más <ArrowRight size={17} aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+            {!preview && (
+              <div className={styles.quotePanel}>
+                <h3>¿Necesitas atención en casa?</h3>
+                <a className="hero__primary" href="#contacto">
+                  Solicita tu presupuesto <ArrowRight size={20} aria-hidden="true" />
+                </a>
+              </div>
+            )}
           </div>
-
-          <div className={styles.support} aria-label="Apoyo clínico y tecnología">
-            {support.map(({ id, title, Icon }) => (
-              <button className={styles.supportItem} type="button" key={id} onClick={() => setSelectedId(id)} aria-haspopup="dialog">
-                <Icon size={42} weight="light" aria-hidden="true" /><span>{title}</span><ArrowRight className={styles.supportArrow} size={16} aria-hidden="true" />
-              </button>
-            ))}
-            <div className={styles.supportItem}><Laptop size={42} weight="light" aria-hidden="true" /><span>E-health</span></div>
-          </div>
-
-          <div className={styles.cta}>
-            <p>Conversemos sobre el cuidado que necesitas</p>
-            <a href="tel:+56991831319">Consultar por atención <ArrowRight size={21} aria-hidden="true" /></a>
+          <div className={styles.nextStep}>
+            {preview ? (
+              <Link className={styles.more} href="/servicios">
+                Ver todos los servicios <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+            ) : (
+              <>
+                <p>¿Tienes dudas sobre la cobertura o cómo acceder a un servicio?</p>
+                <Link className={styles.more} href="/preguntas-frecuentes">
+                  Ver preguntas frecuentes <ArrowRight size={18} aria-hidden="true" />
+                </Link>
+              </>
+            )}
           </div>
         </div>
 
-        <dialog ref={dialog} className={styles.dialog} aria-labelledby="home-care-detail-title" onClose={() => setSelectedId(null)} onClick={(event) => { if (event.target === event.currentTarget) event.currentTarget.close(); }}>
+        {!preview && <dialog ref={dialog} className={styles.dialog} aria-labelledby="home-care-detail-title" onClose={() => setSelectedId(null)} onClick={(event) => { if (event.target === event.currentTarget) event.currentTarget.close(); }}>
           <div className={styles.dialogContent}>
             <button type="button" className={styles.close} aria-label="Cerrar detalle del servicio" onClick={() => dialog.current?.close()}><X size={23} aria-hidden="true" /></button>
             <p className={styles.eyebrow}>Atención domiciliaria</p>
@@ -97,7 +118,7 @@ export function HomeCareSection() {
               })}
             </div>
           </div>
-        </dialog>
+        </dialog>}
       </section>
     </div>
   );

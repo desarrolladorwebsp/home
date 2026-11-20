@@ -1,21 +1,19 @@
 import { Hero } from "@/components/hero";
-import { SiteHeader } from "@/components/site-header";
-import { BookingStrip } from "@/components/sections/booking-strip";
+import { AgreementsSection } from "@/components/sections/agreements-section";
 import { EvaluationSection } from "@/components/sections/evaluation-section";
-import { SiteFooter } from "@/components/sections/site-footer";
+import { HomeBenefitsSection } from "@/components/sections/home-benefits-section";
 import { HomeCareSection } from "@/components/sections/home-care-section";
+import { HowItWorksSection } from "@/components/sections/how-it-works-section";
 
 export default function Home() {
   return (
-    <>
-      <SiteHeader />
-      <main>
-        <div id="inicio"><Hero /></div>
-        <BookingStrip />
-        <HomeCareSection />
-        <EvaluationSection />
-        <SiteFooter />
-      </main>
-    </>
+    <main>
+      <div id="inicio"><Hero /></div>
+      <HomeCareSection preview />
+      <HomeBenefitsSection />
+      <HowItWorksSection />
+      <AgreementsSection />
+      <EvaluationSection />
+    </main>
   );
 }

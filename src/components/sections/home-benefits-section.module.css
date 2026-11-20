@@ -1,0 +1,114 @@
+.section {
+  overflow: clip;
+  padding: clamp(3.5rem, 6vw, 6rem) var(--section-gutter);
+  background: var(--color-surface-green);
+  color: var(--color-secondary);
+  scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.6fr);
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  align-items: stretch;
+}
+.intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(1.75rem, 3vw, 3rem);
+  border-radius: var(--radius-surface);
+  background: linear-gradient(150deg, var(--color-primary-strong), var(--color-primary));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.photo { position: absolute; inset: 0; z-index: -2; }
+.photo img { object-fit: cover; object-position: 50% 60%; }
+.intro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #092e2ce8 0%, #092e2cb8 24%, #092e2c42 43%, transparent 62%);
+  pointer-events: none;
+}
+.caption { position: absolute; right: 1rem; bottom: 1rem; padding: .3rem .5rem; border-radius: .35rem; background: #0d363cbd; color: #fff; font-size: .65rem; line-height: 1.4; }
+.intro h2 {
+  margin: 0;
+  max-width: 12ch;
+  font-size: clamp(2rem, 3.2vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -.045em;
+  text-wrap: balance;
+}
+.intro h2 span { display: block; color: var(--color-accent-on-dark); }
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.card {
+  --enter-x: 24px;
+  min-width: 0;
+  padding: clamp(1.35rem, 2vw, 2rem);
+  border: 1px solid var(--color-border-green);
+  border-radius: var(--radius-surface);
+  background: #fff;
+  box-shadow: 0 3px 8px #164e3b08, 0 14px 32px #164e3b09;
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+.card:nth-child(n + 3) { --enter-x: -24px; }
+.cardTop { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.icon {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  background: var(--color-surface-green-accent);
+  color: var(--color-primary-strong);
+  transition: background-color 240ms ease, color 240ms ease, transform 240ms ease;
+}
+.number { color: #b6ccc0; font-size: .85rem; font-weight: 650; letter-spacing: .08em; }
+.card h3 { margin: 0 0 .75rem; font-size: clamp(1.15rem, 1.6vw, 1.45rem); font-weight: 700; line-height: 1.25; letter-spacing: -.03em; text-wrap: balance; }
+.card p { margin: 0; font-size: 1rem; line-height: 1.65; color: var(--color-muted); }
+@media (hover: hover) and (pointer: fine) {
+  .card:hover { transform: translateY(-7px); border-color: #91c6af; box-shadow: 0 10px 18px #164e3b0d, 0 24px 40px #164e3b15; }
+  .card:hover .icon { background: var(--color-primary-strong); color: #fff; transform: rotate(-6deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .intro { animation: intro-in 650ms cubic-bezier(.2,.7,.2,1) backwards; }
+  .card { animation: card-in 620ms cubic-bezier(.2,.7,.2,1) backwards; }
+  .card:nth-child(even) { animation-delay: 100ms; }
+  @keyframes intro-in { from { opacity: 0; translate: 0 32px; } to { opacity: 1; translate: 0 0; } }
+  @keyframes card-in { from { opacity: 0; translate: var(--enter-x) 24px; } to { opacity: 1; translate: 0 0; } }
+}
+@media (max-width: 1050px) {
+  .container { grid-template-columns: 1fr; }
+  .intro { display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0; gap: 0; }
+  .intro h2 { grid-column: 1; grid-row: 1; max-width: 18ch; padding: 2rem; }
+  .photo { position: relative; inset: auto; grid-column: 2; grid-row: 1; height: 26rem; z-index: 0; }
+  .photo img { object-position: 50% 60%; }
+  .intro::after { display: none; }
+}
+@media (max-width: 600px) {
+  .list { grid-template-columns: 1fr; }
+  .intro { display: flex; flex-direction: column; align-items: stretch; }
+  .intro h2 { order: -1; max-width: none; padding: 1.5rem; font-size: clamp(1.8rem, 7vw, 2.3rem); }
+  .photo { width: 100%; height: auto; aspect-ratio: 4 / 5; }
+  .photo img { object-position: 50% 65%; }
+  .cardTop { margin-bottom: 1.2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, .icon { transition: none; }
+  .card:hover, .card:hover .icon { transform: none; }
+}

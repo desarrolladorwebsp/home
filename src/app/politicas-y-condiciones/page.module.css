@@ -1,0 +1,72 @@
+.page {
+  padding: clamp(2.75rem, 6vw, 5rem) var(--section-gutter);
+  background: linear-gradient(150deg, var(--color-surface-green), #fff 65%);
+  color: var(--color-secondary);
+}
+
+.shell { max-width: 76rem; margin-inline: auto; }
+.header { max-width: 44rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+
+.header h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  font-weight: 750;
+  letter-spacing: -.055em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.header h1 span { color: var(--color-primary-strong); }
+.header p, .securityIntro p, .card p { margin: .85rem 0 0; line-height: 1.65; }
+.header p, .card p { color: var(--color-muted); }
+
+.security {
+  padding: clamp(1.25rem, 4vw, 3rem);
+  border-radius: var(--radius-surface);
+  background: linear-gradient(135deg, var(--color-primary-strong), var(--color-primary));
+  scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+
+.securityIntro { max-width: 48rem; margin-bottom: 1.6rem; color: #fff; }
+.securityIcon { margin-bottom: .65rem; color: var(--color-accent-on-dark); }
+.securityIntro p { color: var(--color-surface-green-accent); }
+
+.securityIntro h2, .resources h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.35rem);
+  font-weight: 730;
+  letter-spacing: -.035em;
+  line-height: 1.15;
+}
+
+.principles, .resourceLinks { display: grid; gap: .9rem; }
+.principles {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card, .resourceLinks a {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-surface);
+  background: #fff;
+}
+
+.card { padding: clamp(1rem, 2vw, 1.4rem); }
+.card svg, .resourceLinks svg { color: var(--color-primary-strong); }
+.card h3 { margin: .7rem 0 0; font-size: 1.12rem; font-weight: 700; }
+.card p { margin-top: .45rem; }
+
+.resources { margin-top: clamp(2rem, 5vw, 3.5rem); }
+.resourceLinks { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 1rem; }
+.resourceLinks a { display: flex; align-items: center; gap: .75rem; padding: 1rem; font-weight: 650; }
+.resourceLinks span { min-width: 0; flex: 1; }
+.resourceLinks small { font-weight: 500; }
+.resourceLinks svg { flex-shrink: 0; }
+.resourceLinks a:hover { background: var(--color-surface-green); }
+.resourceLinks a:focus-visible { outline: 2px solid var(--color-primary-strong); outline-offset: 4px; }
+
+@media (max-width: 760px) {
+  .principles, .resourceLinks { grid-template-columns: minmax(0, 1fr); }
+}

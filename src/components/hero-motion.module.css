@@ -1,0 +1,70 @@
+.interactive {
+  transition: background-color 220ms ease, box-shadow 260ms ease, color 220ms ease, transform 260ms ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .intro > :is(p, h1) {
+    animation: reveal 640ms cubic-bezier(.2, .75, .25, 1) backwards;
+  }
+
+  .intro > h1 { animation-delay: 90ms; }
+  .intro > p:nth-of-type(2) { animation-delay: 185ms; }
+
+  .actions > a {
+    animation: button-in 620ms cubic-bezier(.2, .8, .25, 1.08) 270ms backwards;
+  }
+
+  .actions > a + a { animation-delay: 365ms; }
+  .actions > a:focus-visible { animation: none; }
+
+  .photo {
+    animation: photo-in 1050ms cubic-bezier(.18, .72, .24, 1) backwards;
+  }
+
+  .panel {
+    animation: panel-in 760ms cubic-bezier(.18, .72, .24, 1) 100ms backwards;
+  }
+
+  .stagger > * {
+    animation: reveal 550ms cubic-bezier(.2, .75, .25, 1) 330ms backwards;
+  }
+
+  .stagger > :nth-child(2) { animation-delay: 400ms; }
+  .stagger > :nth-child(3) { animation-delay: 470ms; }
+  .stagger > :nth-child(4) { animation-delay: 540ms; }
+  .stagger > :focus-within { animation: none; }
+
+  .interactive svg:last-child { transition: transform 240ms ease; }
+  .interactive:active { transform: scale(.97); }
+
+  @media (hover: hover) and (pointer: fine) {
+    .interactive:hover { transform: translateY(var(--hero-lift, -4px)); }
+    .interactive:hover svg:last-child { transform: translateX(5px); }
+    .interactive.down:hover svg:last-child { transform: translateY(4px); }
+    .interactive:hover:active { transform: scale(.97); }
+  }
+
+  @keyframes reveal {
+    from { opacity: .12; translate: 0 22px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+
+  @keyframes button-in {
+    from { opacity: 0; translate: 0 28px; scale: .93; }
+    to { opacity: 1; translate: 0 0; scale: 1; }
+  }
+
+  @keyframes photo-in {
+    from { opacity: .25; scale: 1.055; }
+    to { opacity: 1; scale: 1; }
+  }
+
+  @keyframes panel-in {
+    from { opacity: .2; translate: 18px 14px; }
+    to { opacity: 1; translate: 0 0; }
+  }
+
+  @media (max-width: 830px) {
+    .panel { animation-name: reveal; }
+  }
+}
