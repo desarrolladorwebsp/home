@@ -83,29 +83,86 @@
   .channelList li + li { padding-inline-start: 0; border-inline-start: 0; }
 }
 .section h2 { margin: 0; font-size: clamp(1.55rem, 3vw, 2.4rem); font-weight: 720; line-height: 1.1; letter-spacing: -.035em; }
-.office > svg { color: var(--color-primary-strong); flex-shrink: 0; }
-
-.offices { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); list-style: none; padding: 0; gap: 1rem; margin: 1.4rem 0 0; }
-.office { display: flex; flex-direction: column; align-items: flex-start; border: 1px solid var(--color-border); border-radius: var(--radius-surface); padding: clamp(1.1rem,2.5vw,1.65rem); background: #fff; }
-.region { color: var(--color-primary-strong); font-weight: 650; font-size: .85rem; margin: .7rem 0 .25rem; }
-.office h3 { margin: 0; font-size: 1.25rem; font-weight: 720; line-height: 1.3; }
-.office address { font-style: normal; color: var(--color-muted); line-height: 1.55; margin: .45rem 0 .5rem; }
-.phone, .map { display: inline-flex; align-items: center; gap: .5rem; min-height: 44px; font-weight: 650; color: var(--color-primary-strong); }
-.phone { margin-top: auto; }
+.section { scroll-margin-top: calc(var(--header-height) + .5rem); }
+.offices {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr);
+  align-items: start;
+  gap: clamp(.9rem, 2vw, 1.35rem);
+  margin-top: 1.4rem;
+}
+.officeList { display: grid; gap: .65rem; margin: 0; padding: 0; list-style: none; }
+.office {
+  border: 1px solid var(--color-border-green);
+  border-radius: .75rem;
+  background: var(--color-background);
+}
+.office[data-active="true"] {
+  border-inline-start: 4px solid var(--color-primary);
+  background: var(--color-surface-green);
+}
+.officeButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: .65rem .95rem;
+  border-radius: inherit;
+  color: var(--color-secondary);
+  font-size: 1.12rem;
+  font-weight: 720;
+  text-align: start;
+  cursor: pointer;
+}
+.officeButton:hover, .officeButton[aria-pressed="true"] { color: var(--color-primary-strong); }
+.officeButton[aria-pressed="true"] svg { visibility: hidden; }
+.officeButton svg, .officeDetails svg, .directions svg { flex-shrink: 0; }
+.officeDetails { padding: 0 .95rem .7rem; }
+.region { margin: 0 0 .4rem; color: var(--color-primary-strong); font-size: .8rem; font-weight: 650; }
+.officeDetails address, .phone { display: flex; align-items: baseline; gap: .45rem; font-size: .9rem; }
+.officeDetails address { font-style: normal; color: var(--color-muted); }
+.officeDetails svg { align-self: flex-start; margin-top: .2rem; color: var(--color-primary-strong); }
+.phone { align-items: center; min-height: 44px; font-weight: 650; color: var(--color-primary-strong); }
+.phone svg { align-self: center; margin-top: 0; }
+.mapPanel {
+  overflow: hidden;
+  border: 1px solid var(--color-border-green);
+  border-radius: var(--radius-surface);
+  background: var(--color-surface-green-soft);
+}
 .officeMap {
   display: block;
   width: 100%;
-  height: clamp(11rem, 18vw, 14rem);
-  margin: .5rem 0 .25rem;
-  border: 1px solid var(--color-border);
-  border-radius: .7rem;
-  background-color: var(--color-surface-green);
+  height: clamp(15rem, 23vw, 21rem);
+  border: 0;
+  background: var(--color-surface-green);
 }
-.map { text-decoration: underline; text-underline-offset: .2em; }
-.page a:focus-visible { outline: 2px solid var(--color-primary-strong); outline-offset: 4px; }
+.mapActions {
+  display: flex;
+  justify-content: flex-end;
+  padding: .65rem .85rem;
+  border-top: 1px solid var(--color-border-green);
+}
+.directions {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  min-height: 44px;
+  padding: .55rem 1rem;
+  border-radius: var(--radius-control);
+  background: var(--color-primary);
+  color: white;
+  font-weight: 650;
+}
+.directions:hover { background: var(--color-primary-strong); }
+.page a:focus-visible, .officeButton:focus-visible { outline: 2px solid var(--color-primary-strong); outline-offset: 4px; }
 @media (max-width: 830px) {
   .heroInner, .offices { grid-template-columns: minmax(0, 1fr); }
   .heroPhoto { aspect-ratio: 4 / 3; }
+  .mapActions { justify-content: stretch; }
+  .directions { justify-content: center; width: 100%; }
 }
 @media (max-width: 600px) {
   .hero h1 { font-size: clamp(2.05rem, 9vw, 2.65rem); }

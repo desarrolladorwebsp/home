@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowDown, ArrowUpRight, Clock, DeviceMobile, EnvelopeSimple, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
-import { commercialHours, santiagoOffice } from "@/lib/contact-details";
+import { ArrowDown, Clock, DeviceMobile, EnvelopeSimple, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
+import { commercialHours } from "@/lib/contact-details";
 import { contactPhones } from "@/lib/contact-phones";
 import { AgreementsSection } from "@/components/sections/agreements-section";
 import { EvaluationSection } from "@/components/sections/evaluation-section";
 import motion from "@/components/hero-motion.module.css";
+import { OfficeDirectory } from "./office-directory";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Contacto y oficinas administrativas | Home Medical Clinic",
   description: "Canales de consulta, horarios comerciales y oficinas administrativas de Home Medical Clinic en Santiago, Concepción y Temuco.",
 };
-
-const offices = [
-  { ...santiagoOffice, phone: contactPhones.landline },
-  { region: "Región del Biobío", city: "Concepción", address: "Av. Bernardo O’Higgins 420, piso 7, oficinas 701–702", phone: contactPhones.landline },
-  { region: "Región de La Araucanía", city: "Temuco", address: "Antonio Varas 979, oficina 503", phone: contactPhones.salesMobile, phonePrefix: "Consultas comerciales: " },
-] as const;
 
 const { landline, salesMobile } = contactPhones;
 
@@ -73,34 +68,7 @@ export default function ContactPage() {
         <div className={styles.shell}>
           <p className={styles.eyebrow}>Dónde encontrarnos</p>
           <h2 id="offices-title">Oficinas administrativas</h2>
-          <ul className={styles.offices}>
-            {offices.map((office) => {
-              const { region, city, address, phone } = office;
-              const location = encodeURIComponent(`${address.split(",")[0]}, ${city}, Chile`);
-
-              return (
-                <li key={region} className={styles.office}>
-                  <MapPin size={28} weight="duotone" aria-hidden="true" />
-                  <p className={styles.region}>{region}</p>
-                  <h3>{city}</h3>
-                  <address>{address}</address>
-                  <a className={styles.phone} href={phone.href}>
-                    {"phonePrefix" in office && office.phonePrefix}{phone.label}
-                  </a>
-                  <iframe
-                    className={styles.officeMap}
-                    src={`https://maps.google.com/maps?q=${location}&z=16&output=embed`}
-                    title={`Mapa de la oficina de HMC en ${city}`}
-                    loading="lazy"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                  />
-                  <a className={styles.map} aria-label={`Ver en Google Maps: ${city}`} href={`https://www.google.com/maps/search/?api=1&query=${location}`}>
-                    Ver en Google Maps <ArrowUpRight size={17} aria-hidden="true" />
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+          <OfficeDirectory />
         </div>
       </section>
       <AgreementsSection />
