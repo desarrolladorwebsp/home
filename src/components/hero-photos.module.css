@@ -1,0 +1,45 @@
+.frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.frame[data-state="previous"], .frame[data-state="current"] {
+  opacity: 1;
+}
+
+.frame[data-state="current"] { z-index: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .frame[data-fade="true"] { animation: fade-in 650ms ease-in-out both; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.rehabilitation { --hero-photo-position: 95% 0%; }
+.family { --hero-photo-position: 100% 35%; }
+
+.toggle {
+  position: absolute;
+  z-index: 1;
+  inset-block-start: 1rem;
+  inset-inline-end: var(--section-gutter);
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid #ffffff7a;
+  border-radius: 50%;
+  background: var(--color-primary-strong);
+  color: #fff;
+}
+
+.toggle:hover { background: var(--color-primary); }
+.toggle:focus-visible { outline: 2px solid #fff; outline-offset: -5px; }
+
+@media (max-width: 900px) {
+  .toggle { inset: .75rem auto auto .75rem; }
+}

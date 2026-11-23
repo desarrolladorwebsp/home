@@ -1,6 +1,7 @@
 import motion from "./hero-motion.module.css";
 import Image from "next/image";
 import { ArrowRight, HouseLine, User, Heartbeat, Users } from "@phosphor-icons/react/dist/ssr";
+import { HeroPhotos } from "./hero-photos";
 
 const benefits = [
   { title: "Junto a los que más quieres", Icon: HouseLine },
@@ -12,7 +13,7 @@ const benefits = [
 export function Hero() {
   return (
     <section data-replay className="hero" aria-labelledby="hero-title">
-      <div className="hero__photo" aria-hidden="true"><Image src="/hospitalizacion-domiciliaria-hero.webp" alt="" fill preload quality={90} sizes="100vw" className={`object-cover ${motion.photo}`} /></div>
+      <HeroPhotos />
       <div className="hero__wash" aria-hidden="true" />
 
       <div className={`hero__content ${motion.intro}`}>

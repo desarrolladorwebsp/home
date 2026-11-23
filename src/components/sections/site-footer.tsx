@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FilePdf, LockKey, MapPin, Phone, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
+import { InlineSocialLinks } from "@/components/social-links";
 import { commercialHours, santiagoOffice } from "@/lib/contact-details";
 import { contactPhones } from "@/lib/contact-phones";
 
@@ -10,11 +11,10 @@ export function SiteFooter() {
       <div className="footer__main">
         <div className="footer__brand">
           <Link className="footer__logo" href="/#inicio" aria-label="Home Medical Clinic, volver al inicio">
-            <Image src="/logo-hmc.png" alt="Home Medical Clinic" width={259} height={100} sizes="176px" />
+            <Image src="/logo-hmc.png" alt="Home Medical Clinic" width={259} height={100} sizes="182px" />
           </Link>
           <p>Con el respaldo de:</p>
           <span className="footer__backing" role="img" aria-label="Empresas Banmédica" />
-          <small>Experiencia en salud, más cerca de ti.</small>
         </div>
 
         <nav className="footer__column" aria-label="Servicios">
@@ -40,11 +40,25 @@ export function SiteFooter() {
           <a href="mailto:contacto@hmc.cl">contacto@hmc.cl</a>
           <p><MapPin size={18} aria-hidden="true" /><span>{santiagoOffice.address}<br />{santiagoOffice.city}</span></p>
           <span>{commercialHours.days}<br />{commercialHours.opens} a {commercialHours.closes} hrs</span>
+          <div className="footer__social">
+            <InlineSocialLinks label="Redes sociales de HMC en el pie de página" />
+          </div>
         </div>
         <div className="footer__message"><i aria-hidden="true" /><p>Tu salud,<br /><strong>en buenas manos</strong></p></div>
       </div>
 
-      <div className="footer__bottom"><p>© 2026 Home Medical Clinic. Todos los derechos reservados.</p><nav aria-label="Información legal"><Link className="footer__ethics" href="/etica-y-cumplimiento"><ShieldCheck size={18} aria-hidden="true" /> Ética y cumplimiento</Link><a className="footer__ethics" href="/pdf/Carta_de_derechos.pdf" target="_blank" rel="noopener noreferrer"><FilePdf size={18} aria-hidden="true" /> Derechos y deberes del paciente</a><Link className="footer__ethics" href="/politicas-y-condiciones"><LockKey size={18} aria-hidden="true" /> Políticas y condiciones</Link></nav><span>Desarrollado por SmartPro</span></div>
+      <div className="footer__bottom">
+        <p>© 2026 Home Medical Clinic. Todos los derechos reservados.</p>
+        <nav aria-label="Información legal">
+          <Link className="footer__ethics" href="/etica-y-cumplimiento"><ShieldCheck size={18} aria-hidden="true" /> Ética y cumplimiento</Link>
+          <a className="footer__ethics" href="/pdf/Carta_de_derechos.pdf" target="_blank" rel="noopener noreferrer"><FilePdf size={18} aria-hidden="true" /> Derechos y deberes del paciente</a>
+          <Link className="footer__ethics" href="/politicas-y-condiciones"><LockKey size={18} aria-hidden="true" /> Políticas y condiciones</Link>
+        </nav>
+        <span className="footer__credit">
+          Desarrollado por
+          <Image src="/logo-smartpro-white-letters.webp" alt="SmartPro" width={256} height={85} unoptimized />
+        </span>
+      </div>
     </footer>
   );
 }

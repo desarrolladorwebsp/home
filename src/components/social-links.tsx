@@ -14,9 +14,9 @@ export function SocialLinks() {
   );
 }
 
-export function InlineSocialLinks() {
+export function InlineSocialLinks({ label = "Redes sociales de HMC en contacto" }: { label?: string }) {
   return (
-    <nav className="social-links-inline" aria-label="Redes sociales de HMC en contacto">
+    <nav className="social-links-inline" aria-label={label}>
       <SocialLinkItems />
     </nav>
   );
