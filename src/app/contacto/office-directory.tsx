@@ -16,6 +16,17 @@ export function OfficeDirectory() {
   const [selected, setSelected] = useState(0);
   const office = offices[selected];
   const location = encodeURIComponent(`${office.address.split(",")[0]}, ${office.city}, Chile`);
+  const directions = (
+    <a
+      className={styles.directions}
+      href={`https://www.google.com/maps/dir/?api=1&destination=${location}`}
+      aria-label={`Cómo llegar a la oficina de ${office.city}`}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Cómo llegar <ArrowUpRight size={18} aria-hidden="true" />
+    </a>
+  );
 
   return (
     <div className={styles.offices}>
@@ -45,6 +56,7 @@ export function OfficeDirectory() {
                     <Phone size={16} aria-hidden="true" />
                     <span>{"phonePrefix" in item && item.phonePrefix}{item.phone.label}</span>
                   </a>
+                  <div className={styles.officeActions}>{directions}</div>
                 </div>
               )}
             </li>
@@ -61,17 +73,7 @@ export function OfficeDirectory() {
           referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
         />
-        <div className={styles.mapActions}>
-          <a
-            className={styles.directions}
-            href={`https://www.google.com/maps/dir/?api=1&destination=${location}`}
-            aria-label={`Cómo llegar a la oficina de ${office.city}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Cómo llegar <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
-        </div>
+        <div className={styles.mapActions}>{directions}</div>
       </div>
     </div>
   );

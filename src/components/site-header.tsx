@@ -5,7 +5,7 @@ import { useScrollDirection } from "@/lib/use-scroll-direction";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, List } from "@phosphor-icons/react";
+import { ArrowRight, List, X } from "@phosphor-icons/react";
 
 const navigation = [
   { label: "Inicio", href: "/#inicio" },
@@ -16,16 +16,18 @@ const navigation = [
 ] as const;
 
 function NavigationLinks({ mobile = false, budgetHref }: { mobile?: boolean; budgetHref: string }) {
+  const links = navigation.map((item) => (
+    <Link key={item.label} href={item.href}>{item.label}</Link>
+  ));
+
+  if (!mobile) return <nav className="site-header__nav" aria-label="Navegación principal">{links}</nav>;
+
   return (
-    <nav className={mobile ? "site-header__mobile-nav" : "site-header__nav"} aria-label="Navegación principal">
-      {navigation.map((item) => (
-        <Link key={item.label} href={item.href}>{item.label}</Link>
-      ))}
-      {mobile && (
-        <Link className="site-header__mobile-cta" href={budgetHref}>
-          Solicita tu presupuesto <ArrowRight aria-hidden="true" size={18} weight="bold" />
-        </Link>
-      )}
+    <nav className="site-header__mobile-nav" aria-label="Navegación principal">
+      <div className="site-header__mobile-links">{links}</div>
+      <Link className="site-header__mobile-cta" href={budgetHref}>
+        Solicita tu presupuesto <ArrowRight aria-hidden="true" size={18} weight="bold" />
+      </Link>
     </nav>
   );
 }
@@ -61,7 +63,10 @@ export function SiteHeader() {
               menu.current?.querySelector("summary")?.focus();
             }
           }}>
-          <summary aria-label="Abrir menú de navegación"><List aria-hidden="true" size={27} /></summary>
+          <summary aria-label="Menú de navegación">
+            <List className="site-header__menu-open" aria-hidden="true" size={27} />
+            <X className="site-header__menu-close" aria-hidden="true" size={26} />
+          </summary>
           <NavigationLinks mobile budgetHref={budgetHref} />
         </details>
       </div>

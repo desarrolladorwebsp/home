@@ -519,26 +519,37 @@ button, select {
     border-color: var(--color-primary);
     color: var(--color-primary-strong);
   }
+  .site-header__mobile-menu .site-header__menu-close,
+  .site-header__mobile-menu[open] .site-header__menu-open { display: none; }
+  .site-header__mobile-menu[open] .site-header__menu-close { display: block; }
   .site-header__mobile-nav {
     position: absolute;
     top: calc(100% + 0.75rem);
     right: 0;
     display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
     width: min(19rem, calc(100vw - 2rem));
+    max-height: calc(100dvh - var(--header-height) - .75rem - env(safe-area-inset-bottom));
     padding: 0.75rem;
     border: 1px solid rgb(36 59 84 / 10%);
     border-radius: var(--radius-surface);
     background: #fff;
     box-shadow: 0 20px 48px rgb(15 62 52 / 18%);
   }
-  .site-header__mobile-nav > a:not(.site-header__mobile-cta) {
+  .site-header__mobile-links {
+    display: grid;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    border-radius: .7rem;
+  }
+  .site-header__mobile-links a {
     padding: 0.85rem 1rem;
     border-radius: 0.7rem;
     color: var(--color-secondary);
     font-size: 0.95rem;
     font-weight: 650;
   }
-  .site-header__mobile-nav > a:not(.site-header__mobile-cta):hover, .site-header__mobile-nav > a:not(.site-header__mobile-cta):focus-visible {
+  .site-header__mobile-links a:hover, .site-header__mobile-links a:focus-visible {
     background: var(--color-surface-green);
     color: var(--color-primary-strong);
     outline: none;
@@ -546,6 +557,11 @@ button, select {
   .site-header__mobile-cta {
     margin-top: 0.5rem;
   }
+}
+@media (max-width: 1000px) and (max-height: 420px) {
+  .site-header__mobile-nav { width: min(26rem, calc(100vw - 2rem)); }
+  .site-header__mobile-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-header__mobile-links a { min-height: 44px; padding: .65rem .75rem; }
 }
 @media (max-width: 900px) {
   #inicio {

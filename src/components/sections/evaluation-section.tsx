@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Script from "next/script";
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowRight, Briefcase, ChatCircleText, ClipboardText, Receipt } from "@phosphor-icons/react";
 import { InlineSocialLinks } from "@/components/social-links";
 import { areas, categories, interests, locations, specialties, validateContact, type ContactMode } from "@/lib/evaluation";
@@ -29,6 +29,8 @@ const helpText: Record<ContactMode, string> = {
 };
 
 export function EvaluationSection() {
+  const formHeading = useRef<HTMLHeadingElement>(null);
+  const revealOnModeChange = useRef(false);
   const captcha = useRef<Captcha>(null);
   const widget = useRef<HTMLDivElement>(null);
   const widgetId = useRef<number | null>(null);
@@ -40,8 +42,25 @@ export function EvaluationSection() {
   const [location, setLocation] = useState("");
   const active = modes[mode];
 
+  function revealForm() {
+    formHeading.current?.focus({ preventScroll: true });
+    formHeading.current?.scrollIntoView({ block: "start" });
+  }
+
+  useEffect(() => {
+    if (!revealOnModeChange.current) return;
+    revealOnModeChange.current = false;
+    revealForm();
+  }, [mode]);
+
   function changeMode(next: ContactMode) {
-    if (next === mode || pending) return;
+    if (pending) return;
+    const shouldReveal = window.matchMedia("(max-width: 880px)").matches;
+    if (next === mode) {
+      if (shouldReveal) revealForm();
+      return;
+    }
+    revealOnModeChange.current = shouldReveal;
     if (widgetId.current !== null) captcha.current?.reset(widgetId.current);
     setToken("");
     setErrors({});
@@ -126,15 +145,10 @@ export function EvaluationSection() {
               return <button key={id} type="button" aria-pressed={id === mode} aria-controls="evaluation-fields" disabled={pending} onClick={() => changeMode(id)}><Icon size={22} aria-hidden="true" /><span>{label}</span><ArrowRight size={17} aria-hidden="true" /></button>;
             })}
           </div>
-          <div className={styles.brand}>
-            <Image src="/logo-hmc.png" alt="Home Medical Clinic" width={259} height={100} />
-            <p>Experiencia en salud, más cerca de ti.</p>
-            <InlineSocialLinks />
-          </div>
         </div>
         <form data-replay className={styles.form} aria-labelledby="evaluation-title" method="post" action="/api/evaluacion" onSubmit={handleSubmit}>
           <div id="evaluation-fields" key={mode} className={styles.modePanel}>
-            <h3 id="evaluation-title" aria-live="polite">{active.title}</h3>
+            <h3 id="evaluation-title" ref={formHeading} tabIndex={-1} aria-live="polite">{active.title}</h3>
             <p className={styles.subtitle}>{active.subtitle} Los campos con * son obligatorios.</p>
             <input type="hidden" name="modo" value={mode} />
             <div className={styles.grid}>
@@ -167,6 +181,11 @@ export function EvaluationSection() {
           <p className={styles.preview}>Vista local · No envía ni almacena solicitudes.</p>
           <p className={styles.notice} role="status">{notice}</p>
         </form>
+        <div className={styles.brand}>
+          <Image src="/logo-hmc.png" alt="Home Medical Clinic" width={259} height={100} />
+          <p>Experiencia en salud, más cerca de ti.</p>
+          <InlineSocialLinks />
+        </div>
       </div>
     </section>
   );

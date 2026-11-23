@@ -123,9 +123,8 @@
 .region { margin: 0 0 .4rem; color: var(--color-primary-strong); font-size: .8rem; font-weight: 650; }
 .officeDetails address, .phone { display: flex; align-items: baseline; gap: .45rem; font-size: .9rem; }
 .officeDetails address { font-style: normal; color: var(--color-muted); }
-.officeDetails svg { align-self: flex-start; margin-top: .2rem; color: var(--color-primary-strong); }
+.officeDetails address svg { align-self: flex-start; margin-top: .2rem; color: var(--color-primary-strong); }
 .phone { align-items: center; min-height: 44px; font-weight: 650; color: var(--color-primary-strong); }
-.phone svg { align-self: center; margin-top: 0; }
 .mapPanel {
   overflow: hidden;
   border: 1px solid var(--color-border-green);
@@ -145,6 +144,7 @@
   padding: .65rem .85rem;
   border-top: 1px solid var(--color-border-green);
 }
+.officeActions { display: none; }
 .directions {
   display: inline-flex;
   align-items: center;
@@ -161,8 +161,9 @@
 @media (max-width: 830px) {
   .heroInner, .offices { grid-template-columns: minmax(0, 1fr); }
   .heroPhoto { aspect-ratio: 4 / 3; }
-  .mapActions { justify-content: stretch; }
-  .directions { justify-content: center; width: 100%; }
+  .mapActions { display: none; }
+  .officeActions { display: block; margin-top: .3rem; }
+  .officeActions .directions { font-size: .92rem; }
 }
 @media (max-width: 600px) {
   .hero h1 { font-size: clamp(2.05rem, 9vw, 2.65rem); }

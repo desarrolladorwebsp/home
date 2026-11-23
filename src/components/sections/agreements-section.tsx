@@ -36,7 +36,7 @@ export function AgreementsSection() {
     <section id="convenios" className={styles.section} aria-labelledby="agreements-title">
       <div className={styles.inner}>
         <h2 id="agreements-title">Convenios</h2>
-        <div className={styles.viewport}>
+        <div className={styles.viewport} role="group" aria-label="Logos de convenios" tabIndex={0}>
           <div className={styles.track}>
             <PartnerLogos />
             <PartnerLogos repeated />

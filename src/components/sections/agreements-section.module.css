@@ -28,6 +28,8 @@
   min-width: 0;
   overflow: hidden;
 }
+.viewport:focus-visible { outline: 2px solid var(--color-primary-strong); outline-offset: 3px; }
+.viewport:focus-within .track { animation-play-state: paused; }
 
 .track {
   display: flex;
@@ -89,4 +91,17 @@
     padding-inline-end: 0;
   }
   .tile { width: var(--static-tile-width); }
+}
+
+@media (max-width: 760px) {
+  .viewport {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+  .track { width: max-content; animation: none; }
+  .repeated { display: none; }
+  .logos { width: auto; flex-wrap: nowrap; justify-content: flex-start; }
+  .tile { width: clamp(7.75rem, 35vw, 10rem); scroll-snap-align: start; }
 }

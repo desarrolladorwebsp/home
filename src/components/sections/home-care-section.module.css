@@ -116,7 +116,26 @@
   .card h3 { font-size: 1.1rem; }
   .card:nth-child(n) { --enter-x: 16px; }
   .card:nth-child(even) { --enter-x: -16px; }
-  .dialogContent { padding: 3.25rem 1.35rem 1.75rem; }
+}
+@media (max-width: 760px) {
+  .dialogContent {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100dvh - 3rem);
+    padding: 0;
+  }
+  .dialogHeader {
+    flex-shrink: 0;
+    padding: 1.55rem 1.35rem .85rem;
+    border-bottom: 1px solid var(--color-border-green);
+  }
+  .dialog .eyebrow { margin: 0 0 .6rem; padding-right: 2.75rem; }
+  .dialog h2 { margin: 0; font-size: clamp(1.3rem, 5vw, 1.65rem); font-weight: 700; }
+  .detail {
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    padding: 1rem 1.35rem 1.5rem;
+  }
 }
 @media (prefers-reduced-motion: no-preference) {
   .card { animation: card-enter 520ms cubic-bezier(.2, .7, .3, 1) backwards; }

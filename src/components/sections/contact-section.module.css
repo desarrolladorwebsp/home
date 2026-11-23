@@ -25,21 +25,24 @@
 .layout {
   display: grid;
   grid-template-columns: minmax(0, .9fr) minmax(0, 1.12fr);
-  gap: clamp(2rem, 6vw, 6rem);
+  grid-template-areas: "copy form" "brand form";
+  column-gap: clamp(2rem, 6vw, 6rem);
   max-width: 1300px;
   margin: auto;
   align-items: center;
 }
 .copy, .form { min-width: 0; }
+.copy { grid-area: copy; align-self: end; }
 .eyebrow { display: flex; align-items: center; gap: .9rem; margin: 0 0 1.6rem; text-transform: uppercase; font-size: .78rem; font-weight: 650; letter-spacing: .16em; }
 .eyebrow::after { content: ""; width: 3.75rem; height: 2px; background: var(--color-primary); }
 .copy h2 { font-size: clamp(2.6rem, 5.2vw, 5rem); font-weight: 450; line-height: 1; letter-spacing: -.065em; margin: 0; }
 .copy h2 strong { display: block; color: var(--color-primary-strong); font-weight: 750; }
 .intro { font-size: clamp(1.06rem, 1.6vw, 1.33rem); line-height: 1.5; color: var(--color-secondary); margin: 1.3rem 0 1.75rem; max-width: 29rem; }
-.brand { border-top: 1px solid var(--color-border); padding-top: 1.15rem; max-width: 29rem; }
+.brand { grid-area: brand; align-self: start; border-top: 1px solid var(--color-border); padding-top: 1.15rem; max-width: 29rem; }
 .brand img { width: 10.25rem; height: auto; }
 .brand p { margin: .75rem 0 0; font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; }
 .form {
+  grid-area: form;
   padding: clamp(1.1rem, 3.4vw, 3rem);
   background: #ffffffba;
   backdrop-filter: blur(19px);
@@ -86,7 +89,14 @@
 }
 @media (prefers-reduced-transparency: reduce) { .form { background: #fff; backdrop-filter: none; } }
 @media (max-width: 880px) {
-  .layout { grid-template-columns: minmax(0, 1fr); max-width: 42rem; }
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "copy" "form" "brand";
+    row-gap: 1.5rem;
+    max-width: 42rem;
+  }
+  .layout .modeList { margin-bottom: 0; }
+  .form h3 { scroll-margin-top: calc(var(--header-height) + 1.5rem); }
   .section::before { background: linear-gradient(180deg, #ffffffef 0%, color-mix(in srgb, var(--color-surface-green-soft) 90%, transparent) 65%, color-mix(in srgb, var(--color-surface-green) 90%, transparent)), url("/control-clinico-en-casa.webp") 61% top / auto 38% no-repeat; }
 }
 @media (max-width: 540px) {

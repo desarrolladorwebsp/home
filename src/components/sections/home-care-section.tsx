@@ -112,9 +112,11 @@ export function HomeCareSection({ preview = false }: { preview?: boolean }) {
 
         {!preview && <dialog ref={dialog} className={styles.dialog} aria-labelledby="home-care-detail-title" onClose={() => setSelectedId(null)} onClick={(event) => { if (event.target === event.currentTarget) event.currentTarget.close(); }}>
           <div className={styles.dialogContent}>
-            <button type="button" className={styles.close} aria-label="Cerrar detalle del servicio" onClick={() => dialog.current?.close()}><X size={23} aria-hidden="true" /></button>
-            <p className={styles.eyebrow}>Atención domiciliaria</p>
-            <h2 id="home-care-detail-title">{selected?.title}</h2>
+            <header className={styles.dialogHeader}>
+              <button type="button" className={styles.close} aria-label="Cerrar detalle del servicio" onClick={() => dialog.current?.close()}><X size={23} aria-hidden="true" /></button>
+              <p className={styles.eyebrow}>Atención domiciliaria</p>
+              <h2 id="home-care-detail-title">{selected?.title}</h2>
+            </header>
             <div className={styles.detail}>
               {selected?.blocks.map((block, index) => {
                 if (block.type === "heading") return <h3 key={index}>{block.text}</h3>;
