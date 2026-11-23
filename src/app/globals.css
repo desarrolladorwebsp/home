@@ -740,25 +740,20 @@ button, select {
 }
 .footer__logo {
   display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: #fff;
+  width: min(100%, 11rem);
+  padding: .3rem .45rem;
+  border-radius: .55rem;
+  background: #fff;
 }
-.footer__logo svg {
-  color: var(--color-accent-on-dark);
-}
-.footer__logo span {
-  font-size: 1.55rem;
-  font-weight: 300;
-  line-height: 0.78;
-}
-.footer__logo strong {
-  color: var(--color-accent-on-dark);
-  font-weight: 450;
+.footer__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 .footer__brand > p {
   max-width: 15rem;
   margin: 1.7rem 0 0.8rem;
+  color: #b4c9bb;
   font-size: 0.73rem;
   font-weight: 650;
   letter-spacing: 0.2em;
@@ -770,18 +765,19 @@ button, select {
   display: block;
   width: min(100%, 11.75rem);
   aspect-ratio: 353 / 96;
-  filter: drop-shadow(0 0 .6px #edf4e8) drop-shadow(0 0 .45px #edf4e8);
+  /* Align the original artwork with its transparent silhouette. */
+  background: url("/logo-empresas-banmedica.png") 59.6% 55.37% / 109.26% 186.76% no-repeat;
+  mask: url("/logo-empresas-banmedica-blanco.png") center / contain no-repeat;
 }
 .footer__backing::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, #fff 0 27%, #102d4c 27% 100%);
-  mask: url("/logo-empresas-banmedica-blanco.png") center / contain no-repeat;
+  inset: 0 0 auto;
+  height: 27%;
+  background: #fff;
 }
 @media (forced-colors: active) {
-  .footer__backing { forced-color-adjust: none; filter: none; }
-  .footer__backing::before { background: CanvasText; }
+  .footer__logo, .footer__backing { forced-color-adjust: none; }
 }
 .footer__brand small {
   display: block;
@@ -1019,7 +1015,7 @@ button, select {
   margin-top: .9rem;
 }
 
-:is(.social-links, .social-links-inline) :is(a, button) {
+:is(.social-links, .social-links-inline) a {
   display: grid;
   width: 2.75rem;
   height: 2.75rem;
@@ -1043,10 +1039,6 @@ button, select {
   translate: .75rem 0;
   visibility: hidden;
   pointer-events: none;
-}
-
-:is(.social-links, .social-links-inline) button:disabled {
-  cursor: default;
 }
 
 @media (max-width: 700px) {

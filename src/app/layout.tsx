@@ -4,6 +4,7 @@ import { AnimationReplay } from "@/components/animation-replay";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SocialLinks } from "@/components/social-links";
+import { isIndexable, siteName, siteOrigin } from "@/lib/site-seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,14 +13,23 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Home Medical Clinic | Hospitalización domiciliaria",
-  description: "Atención médica especializada en la comodidad y seguridad de tu hogar.",
+  metadataBase: new URL(siteOrigin),
+  applicationName: siteName,
+  robots: {
+    index: isIndexable,
+    follow: isIndexable,
+    googleBot: {
+      index: isIndexable,
+      follow: isIndexable,
+      "max-image-preview": "large",
+    },
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="es"
+      lang="es-CL"
       className={`${geistSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

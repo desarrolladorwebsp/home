@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import {
   Ambulance, ArrowRight, ClipboardText, FirstAid, Headset, Heartbeat,
@@ -6,12 +5,10 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import motion from "@/components/hero-motion.module.css";
 import { HeroVideo } from "./hero-video";
+import { pageMetadata } from "@/lib/site-seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Nosotros y nuestros especialistas | Home Medical Clinic",
-  description: "Conoce a Home Medical Clinic y al equipo de medicina, enfermería y kinesiología que acompaña la atención domiciliaria.",
-};
+export const metadata = pageMetadata("/nosotros");
 
 const specialties = [
   {

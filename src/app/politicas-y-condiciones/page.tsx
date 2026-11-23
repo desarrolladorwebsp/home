@@ -1,14 +1,11 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight, FilePdf, FileText, LockKey, ShieldCheck, Timer,
 } from "@phosphor-icons/react/dist/ssr";
+import { pageMetadata } from "@/lib/site-seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Políticas y condiciones | Home Medical Clinic",
-  description: "Conoce los principios de seguridad de la información de Home Medical Clinic y consulta sus recursos institucionales.",
-};
+export const metadata = pageMetadata("/politicas-y-condiciones");
 
 const securityPrinciples = [
   {

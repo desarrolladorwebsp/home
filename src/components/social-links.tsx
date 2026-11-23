@@ -1,6 +1,7 @@
 "use client";
 
 import { useScrollDirection } from "@/lib/use-scroll-direction";
+import { socialProfiles } from "@/lib/social-profiles";
 import { FacebookLogo, InstagramLogo, LinkedinLogo, YoutubeLogo } from "@phosphor-icons/react";
 
 export function SocialLinks() {
@@ -24,22 +25,22 @@ export function InlineSocialLinks() {
 function SocialLinkItems() {
   return (
     <>
-      <a className="social-links__facebook" href="https://www.facebook.com/profile.php?id=61595149133544" target="_blank" rel="noopener noreferrer"
+      <a className="social-links__facebook" href={socialProfiles.facebook} target="_blank" rel="noopener noreferrer"
         aria-label="Facebook de Home Medical Clinic" title="Facebook">
         <FacebookLogo size={22} weight="fill" aria-hidden="true" />
       </a>
-      <a className="social-links__youtube" href="https://www.youtube.com/@hmc_cl" target="_blank" rel="noopener noreferrer"
+      <a className="social-links__youtube" href={socialProfiles.youtube} target="_blank" rel="noopener noreferrer"
         aria-label="YouTube de Home Medical Clinic" title="YouTube">
         <YoutubeLogo size={22} weight="fill" aria-hidden="true" />
       </a>
-      <a className="social-links__instagram" href="https://www.instagram.com/hmc_cl/" target="_blank" rel="noopener noreferrer"
+      <a className="social-links__instagram" href={socialProfiles.instagram} target="_blank" rel="noopener noreferrer"
         aria-label="Instagram de Home Medical Clinic" title="Instagram">
         <InstagramLogo size={22} aria-hidden="true" />
       </a>
-      <button className="social-links__linkedin" type="button" disabled aria-label="LinkedIn, enlace pendiente"
-        title="LinkedIn · enlace pendiente">
+      <a className="social-links__linkedin" href={socialProfiles.linkedin} target="_blank" rel="noopener noreferrer"
+        aria-label="LinkedIn de Home Medical Clinic" title="LinkedIn">
         <LinkedinLogo size={22} weight="fill" aria-hidden="true" />
-      </button>
+      </a>
     </>
   );
 }

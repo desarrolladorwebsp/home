@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { FilePdf, FirstAid, LockKey, MapPin, Phone, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
+import { FilePdf, LockKey, MapPin, Phone, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
 import { commercialHours, santiagoOffice } from "@/lib/contact-details";
 import { contactPhones } from "@/lib/contact-phones";
 
@@ -8,8 +9,10 @@ export function SiteFooter() {
     <footer className="footer" id="footer">
       <div className="footer__main">
         <div className="footer__brand">
-          <Link className="footer__logo" href="/#inicio" aria-label="Home Medical Clinic, volver al inicio"><FirstAid size={58} weight="fill" aria-hidden="true" /><span>Home<br /><strong>Medical</strong><br />Clinic</span></Link>
-          <p>Atención domiciliaria con el respaldo de</p>
+          <Link className="footer__logo" href="/#inicio" aria-label="Home Medical Clinic, volver al inicio">
+            <Image src="/logo-hmc.png" alt="Home Medical Clinic" width={259} height={100} sizes="176px" />
+          </Link>
+          <p>Con el respaldo de:</p>
           <span className="footer__backing" role="img" aria-label="Empresas Banmédica" />
           <small>Experiencia en salud, más cerca de ti.</small>
         </div>

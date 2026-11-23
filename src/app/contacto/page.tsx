@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowDown, Clock, DeviceMobile, EnvelopeSimple, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
 import { commercialHours } from "@/lib/contact-details";
@@ -7,12 +6,10 @@ import { AgreementsSection } from "@/components/sections/agreements-section";
 import { EvaluationSection } from "@/components/sections/evaluation-section";
 import motion from "@/components/hero-motion.module.css";
 import { OfficeDirectory } from "./office-directory";
+import { pageMetadata } from "@/lib/site-seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Contacto y oficinas administrativas | Home Medical Clinic",
-  description: "Canales de consulta, horarios comerciales y oficinas administrativas de Home Medical Clinic en Santiago, Concepción y Temuco.",
-};
+export const metadata = pageMetadata("/contacto");
 
 const { landline, salesMobile } = contactPhones;
 

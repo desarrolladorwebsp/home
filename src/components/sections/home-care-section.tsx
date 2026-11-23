@@ -37,7 +37,13 @@ export function HomeCareSection({ preview = false }: { preview?: boolean }) {
           {preview ? (
             <div className={styles.header}>
               <div className={styles.photo} aria-hidden="true">
-                <Image src="/rehabilitacion-en-casa.webp" alt="" fill sizes="(max-width: 700px) 100vw, 60vw" />
+                <Image
+                  src="/rehabilitacion-en-casa.webp"
+                  alt=""
+                  width={1440}
+                  height={811}
+                  sizes="(max-width: 900px) 88vw, (max-width: 1640px) 65vw, 1051px"
+                />
               </div>
               <div className={styles.intro}>
                 <p className={styles.eyebrow}>Nuestros servicios</p>

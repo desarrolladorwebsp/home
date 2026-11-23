@@ -1,12 +1,9 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, EnvelopeSimple, FilePdf, MapPin, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
+import { pageMetadata } from "@/lib/site-seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Centro de Ayuda Ética y Cumplimiento | HMC",
-  description: "Canales oficiales de denuncia, códigos de conducta y manuales de prevención de Home Medical Clinic.",
-};
+export const metadata = pageMetadata("/etica-y-cumplimiento");
 
 const portal = "https://secure.ethicspoint.com/domain/media/es/gui/79805/index.html";
 const email = "centrodeayudaetica@hmc.cl";

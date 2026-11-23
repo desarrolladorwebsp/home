@@ -1,15 +1,13 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ChatCircleText, Phone, Plus } from "@phosphor-icons/react/dist/ssr";
+import { Phone, Plus } from "@phosphor-icons/react/dist/ssr";
 import { AgreementsSection } from "@/components/sections/agreements-section";
 import { EvaluationSection } from "@/components/sections/evaluation-section";
 import { contactPhones } from "@/lib/contact-phones";
+import { pageMetadata } from "@/lib/site-seo";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
-  title: "Preguntas frecuentes | Home Medical Clinic",
-  description: "Información sobre ingreso a hospitalización domiciliaria, solicitudes de servicios, cobertura de Isapres, Fonasa y disponibilidad regional de Home Medical Clinic.",
-};
+export const metadata = pageMetadata("/preguntas-frecuentes");
 
 function BudgetContact() {
   return <><Link href="#contacto">Solicitud de Presupuesto</Link>, o llamando al <a href={contactPhones.salesMobile.href}>{contactPhones.salesMobile.label}</a>.</>;
@@ -47,18 +45,26 @@ export default function FrequentlyAskedQuestionsPage() {
   return (
     <main className={styles.page}>
       <section className={styles.hero} aria-labelledby="faq-title">
-        <div className={styles.container}>
-          <div data-replay className={styles.heroCopy}>
-            <p className={styles.eyebrow}>Estamos para orientarte</p>
-            <h1 id="faq-title">Preguntas <span>frecuentes.</span></h1>
-            <p className={styles.lead}>Encuentra información sobre el ingreso, la cobertura y la disponibilidad de nuestros servicios.</p>
-          </div>
-          <div data-replay className={styles.help}>
-            <ChatCircleText size={34} weight="duotone" aria-hidden="true" />
-            <h2>¿Necesitas orientación?</h2>
-            <p>Conversemos sobre el cuidado que necesitas tú o tu familiar.</p>
-            <a href={contactPhones.salesMobile.href}><Phone size={19} aria-hidden="true" /> {contactPhones.salesMobile.label}</a>
-          </div>
+        <div data-replay className={styles.heroCopy}>
+          <h1 id="faq-title">Preguntas <span>frecuentes.</span></h1>
+          <p className={styles.lead}>Encuentra información sobre el ingreso, la cobertura y la disponibilidad de nuestros servicios.</p>
+          <a
+            className={styles.callButton}
+            href={contactPhones.salesMobile.href}
+            aria-label={`Llamar al ${contactPhones.salesMobile.label}`}
+          >
+            <Phone size={25} aria-hidden="true" /> {contactPhones.salesMobile.label}
+          </a>
+        </div>
+        <div className={styles.heroMedia}>
+          <Image
+            className={styles.heroPortrait}
+            src="/faq/orientacion-telefonica.webp"
+            alt=""
+            fill
+            sizes="(max-width: 700px) 100vw, (max-width: 1550px) 46vw, 696px"
+            preload
+          />
         </div>
       </section>
       <section className={styles.questions} aria-labelledby="coverage-title">
