@@ -1,6 +1,7 @@
 .frame {
   position: absolute;
   inset: 0;
+  overflow: hidden;
   opacity: 0;
 }
 
@@ -19,8 +20,22 @@
   to { opacity: 1; }
 }
 
-.rehabilitation { --hero-photo-position: 95% 0%; }
-.family { --hero-photo-position: 100% 35%; }
+.rehabilitation { --hero-photo-position: 86% 29%; }
+.family { --hero-photo-position: 100% 53%; }
+
+@media (min-width: 901px) {
+  :is(.rehabilitation, .family) img {
+    scale: 1.1;
+    transform-origin: right 72%;
+  }
+
+  .original::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(255 255 255 / 93%), rgb(255 255 255 / 86%) 36%, rgb(255 255 255 / 75%) 49%, rgb(255 255 255 / 18%) 65%, transparent 76%);
+  }
+}
 
 .toggle {
   position: absolute;
@@ -41,5 +56,13 @@
 .toggle:focus-visible { outline: 2px solid #fff; outline-offset: -5px; }
 
 @media (max-width: 900px) {
+  .rehabilitation { --hero-photo-position: 100% 29%; }
   .toggle { inset: .75rem auto auto .75rem; }
+}
+
+@media (max-width: 900px) and (min-height: 421px) {
+  :is(.rehabilitation, .family) img {
+    scale: 1.48;
+    transform-origin: right 43%;
+  }
 }

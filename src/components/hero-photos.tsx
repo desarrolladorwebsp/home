@@ -7,9 +7,9 @@ import motion from "./hero-motion.module.css";
 import styles from "./hero-photos.module.css";
 
 const photos = [
-  { src: "/hospitalizacion-domiciliaria-hero.webp", framing: "" },
-  { src: "/hmc-hero-rehabilitacion-en-casa.webp", framing: styles.rehabilitation },
-  { src: "/hmc-hero-cuidado-con-familia.webp", framing: styles.family },
+  { src: "/hospitalizacion-domiciliaria-hero.webp", framing: styles.original },
+  { src: "/hmc-hero-rehabilitacion-pared-clara.webp", framing: styles.rehabilitation },
+  { src: "/hmc-hero-familia-pared-clara.webp", framing: styles.family },
 ];
 const rotationInterval = 3000;
 const motionQuery = "(prefers-reduced-motion: reduce)";

@@ -354,7 +354,6 @@ button, select {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: linear-gradient(90deg, rgb(255 255 255 / 93%), rgb(255 255 255 / 86%) 36%, rgb(255 255 255 / 75%) 49%, rgb(255 255 255 / 18%) 65%, transparent 76%);
   pointer-events: none;
 }
 .hero__content {
