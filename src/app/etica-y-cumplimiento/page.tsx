@@ -64,7 +64,7 @@ export default function CompliancePage() {
           <ul>
             {documents.map(([label, filename]) => (
               <li key={filename}>
-                <a className={styles.document} href={`https://www.hmc.cl/pdf/${filename}`}>
+                <a className={styles.document} href={`/pdf/${filename}`}>
                   <FilePdf size={28} aria-hidden="true" />
                   <span>{label}<small>Ver PDF</small></span>
                   <ArrowUpRight size={19} aria-hidden="true" />

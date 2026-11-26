@@ -11,7 +11,7 @@ const navigation = [
   { label: "Inicio", href: "/#inicio" },
   { label: "Servicios", href: "/servicios" },
   { label: "Nosotros", href: "/nosotros" },
-  { label: "FAQ", href: "/preguntas-frecuentes" },
+  { label: "Preguntas frecuentes", href: "/preguntas-frecuentes" },
   { label: "Contacto", href: "/contacto" },
 ] as const;
 

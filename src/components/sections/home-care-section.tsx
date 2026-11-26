@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, X } from "@phosphor-icons/react";
+import { contactPhone } from "@/lib/contact-phones";
 import sourceContent from "./home-care-content.json";
 import styles from "./home-care-section.module.css";
 
@@ -67,10 +68,7 @@ export function HomeCareSection({ preview = false }: { preview?: boolean }) {
                     />
                   </div>
                   <div className={styles.cardContent}>
-                    <div className={styles.titleRow}>
-                      <h3>{title}</h3>
-                      {anchor === "cuidados" && <span className={styles.badge}>Servicio 100% particular</span>}
-                    </div>
+                    <h3>{title}</h3>
                     <p>{description}</p>
                     {preview ? (
                       <Link className={styles.more} href={`/servicios#${anchor}`} aria-label={`Ver servicio: ${title}`}>
@@ -121,9 +119,9 @@ export function HomeCareSection({ preview = false }: { preview?: boolean }) {
               {selected?.blocks.map((block, index) => {
                 if (block.type === "heading") return <h3 key={index}>{block.text}</h3>;
                 if (block.type === "list") return <ul key={index}>{block.items?.map((item) => <li key={item}>{item}</li>)}</ul>;
-                if (selectedId === "service-5" && block.text?.startsWith("Teléfono:")) return <p key={index}>Teléfono: <a href="tel:+56226310200">22 631 02 00</a></p>;
                 return <p key={index}>{block.text}</p>;
               })}
+              {selectedId === "service-5" && <p>Teléfono: <a href={contactPhone.href}>{contactPhone.label}</a></p>}
             </div>
           </div>
         </dialog>}

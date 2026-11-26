@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FilePdf, LockKey, MapPin, Phone, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
 import { InlineSocialLinks } from "@/components/social-links";
 import { commercialHours, santiagoOffice } from "@/lib/contact-details";
-import { contactPhones } from "@/lib/contact-phones";
+import { contactPhone } from "@/lib/contact-phones";
 
 export function SiteFooter() {
   return (
@@ -35,8 +35,7 @@ export function SiteFooter() {
         </nav>
         <div className="footer__column footer__contact">
           <h2>Contacto</h2>
-          <a href={contactPhones.salesMobile.href}><Phone size={18} aria-hidden="true" />{contactPhones.salesMobile.label}</a>
-          <a href={contactPhones.landline.href}><Phone size={18} aria-hidden="true" />{contactPhones.landline.label}</a>
+          <a href={contactPhone.href}><Phone size={18} aria-hidden="true" />{contactPhone.label}</a>
           <a href="mailto:contacto@hmc.cl">contacto@hmc.cl</a>
           <p><MapPin size={18} aria-hidden="true" /><span>{santiagoOffice.address}<br />{santiagoOffice.city}</span></p>
           <span>{commercialHours.days}<br />{commercialHours.opens} a {commercialHours.closes} hrs</span>

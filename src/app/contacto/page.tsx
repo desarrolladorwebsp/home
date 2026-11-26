@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { ArrowDown, Clock, DeviceMobile, EnvelopeSimple, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
+import { ArrowDown, ArrowRight, Clock, DeviceMobile, EnvelopeSimple, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
 import { commercialHours } from "@/lib/contact-details";
-import { contactPhones } from "@/lib/contact-phones";
+import { contactPhone } from "@/lib/contact-phones";
 import { AgreementsSection } from "@/components/sections/agreements-section";
 import { EvaluationSection } from "@/components/sections/evaluation-section";
 import motion from "@/components/hero-motion.module.css";
@@ -10,8 +11,6 @@ import { pageMetadata } from "@/lib/site-seo";
 import styles from "./page.module.css";
 
 export const metadata = pageMetadata("/contacto");
-
-const { landline, salesMobile } = contactPhones;
 
 export default function ContactPage() {
   return (
@@ -22,22 +21,16 @@ export default function ContactPage() {
             <h1 id="contact-page-title">¿Cómo podemos <span>ayudarte?</span></h1>
             <p className={styles.lead}>Cotiza atención domiciliaria, comparte tu experiencia o postula a nuestro equipo.</p>
             <nav aria-label="Accesos de contacto" className={`${styles.heroActions} ${motion.actions}`}>
-              <a className={`${styles.callLink} ${motion.interactive}`} href={salesMobile.href}>Llamar <Phone size={20} aria-hidden="true" /></a>
+              <a className={`${styles.callLink} ${motion.interactive}`} href={contactPhone.href}>Llamar <Phone size={20} aria-hidden="true" /></a>
               <a className={`${styles.primary} ${motion.interactive} ${motion.down}`} href="#contacto">Ir al formulario <ArrowDown size={18} aria-hidden="true" /></a>
-              <a className={`${styles.officeLink} ${motion.interactive}`} href="#oficinas">Ver oficinas <MapPin size={18} aria-hidden="true" /></a>
+              <a className={`${styles.officeLink} ${motion.interactive}`} href="#oficinas">Ver oficina <MapPin size={18} aria-hidden="true" /></a>
             </nav>
             <section className={styles.channels} aria-label="Ventas y consultas comerciales">
               <ul className={`${styles.channelList} ${motion.stagger}`}>
                 <li>
-                  <a className={motion.interactive} href={landline.href}>
-                    <span className={styles.channelIcon}><Phone size={22} weight="duotone" aria-hidden="true" /></span>
-                    <span><small>Teléfono</small>{landline.label}</span>
-                  </a>
-                </li>
-                <li>
-                  <a className={motion.interactive} href={salesMobile.href}>
+                  <a className={motion.interactive} href={contactPhone.href}>
                     <span className={styles.channelIcon}><DeviceMobile size={22} weight="duotone" aria-hidden="true" /></span>
-                    <span><small>Celular de ventas</small>{salesMobile.label}</span>
+                    <span><small>Celular de ventas</small>{contactPhone.label}</span>
                   </a>
                 </li>
                 <li>
@@ -64,12 +57,26 @@ export default function ContactPage() {
       <section id="oficinas" className={styles.section} aria-labelledby="offices-title">
         <div className={styles.shell}>
           <p className={styles.eyebrow}>Dónde encontrarnos</p>
-          <h2 id="offices-title">Oficinas administrativas</h2>
+          <h2 id="offices-title">Oficina administrativa</h2>
           <OfficeDirectory />
         </div>
       </section>
       <AgreementsSection />
       <EvaluationSection />
+      <section id="documentos" className={styles.complianceSection} aria-labelledby="contact-documents-title">
+        <div className={`${styles.shell} ${styles.complianceBanner}`}>
+          <div className={styles.complianceCopy}>
+            <h2 id="contact-documents-title">Ética y Cumplimiento</h2>
+            <p>Consulta los códigos de conducta y manuales de prevención.</p>
+            <Link className={styles.complianceLink} href="/etica-y-cumplimiento#documents-title">
+              Ver documentos <ArrowRight size={20} weight="bold" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className={styles.complianceArt}>
+            <Image src="/contacto-etica-documentos.webp" alt="" fill unoptimized />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

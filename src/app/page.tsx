@@ -5,7 +5,7 @@ import { HomeBenefitsSection } from "@/components/sections/home-benefits-section
 import { HomeCareSection } from "@/components/sections/home-care-section";
 import { HowItWorksSection } from "@/components/sections/how-it-works-section";
 import { santiagoOffice } from "@/lib/contact-details";
-import { contactPhones } from "@/lib/contact-phones";
+import { contactPhone } from "@/lib/contact-phones";
 import { pageMetadata, siteName, sitePages, siteUrl } from "@/lib/site-seo";
 import { socialProfiles } from "@/lib/social-profiles";
 
@@ -25,7 +25,7 @@ const homeSchema = {
       logo: siteUrl("/seo/logo-hmc.png"),
       sameAs: Object.values(socialProfiles),
       email: "contacto@hmc.cl",
-      telephone: contactPhones.landline.href.slice(4),
+      telephone: contactPhone.href.slice(4),
       address: {
         "@type": "PostalAddress",
         streetAddress: santiagoOffice.address,

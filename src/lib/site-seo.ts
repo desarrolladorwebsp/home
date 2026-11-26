@@ -24,8 +24,8 @@ export const sitePages = {
     description: "Resuelve dudas sobre el ingreso a hospitalización domiciliaria, la solicitud de servicios, la cobertura de Isapres y la disponibilidad por región.",
   },
   "/contacto": {
-    title: "Contacto y oficinas administrativas",
-    description: "Solicita una cotización de atención domiciliaria o consulta los teléfonos, horarios y oficinas de Home Medical Clinic en Santiago, Concepción y Temuco.",
+    title: "Contacto y oficina administrativa en Providencia",
+    description: "Solicita una cotización de atención domiciliaria o consulta el teléfono, horario y dirección de Home Medical Clinic en Providencia, Santiago.",
   },
   "/etica-y-cumplimiento": {
     title: "Centro de Ayuda Ética y Cumplimiento",

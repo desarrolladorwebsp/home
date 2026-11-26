@@ -3,14 +3,14 @@ import Link from "next/link";
 import { Phone, Plus } from "@phosphor-icons/react/dist/ssr";
 import { AgreementsSection } from "@/components/sections/agreements-section";
 import { EvaluationSection } from "@/components/sections/evaluation-section";
-import { contactPhones } from "@/lib/contact-phones";
+import { contactPhone } from "@/lib/contact-phones";
 import { pageMetadata } from "@/lib/site-seo";
 import styles from "./page.module.css";
 
 export const metadata = pageMetadata("/preguntas-frecuentes");
 
 function BudgetContact() {
-  return <><Link href="#contacto">Solicitud de Presupuesto</Link>, o llamando al <a href={contactPhones.salesMobile.href}>{contactPhones.salesMobile.label}</a>.</>;
+  return <><Link href="#contacto">Solicitud de Presupuesto</Link>, o llamando al <a href={contactPhone.href}>{contactPhone.label}</a>.</>;
 }
 
 const questions = [
@@ -50,10 +50,10 @@ export default function FrequentlyAskedQuestionsPage() {
           <p className={styles.lead}>Encuentra información sobre el ingreso, la cobertura y la disponibilidad de nuestros servicios.</p>
           <a
             className={styles.callButton}
-            href={contactPhones.salesMobile.href}
-            aria-label={`Llamar al ${contactPhones.salesMobile.label}`}
+            href={contactPhone.href}
+            aria-label={`Llamar al ${contactPhone.label}`}
           >
-            <Phone size={25} aria-hidden="true" /> {contactPhones.salesMobile.label}
+            <Phone size={25} aria-hidden="true" /> {contactPhone.label}
           </a>
         </div>
         <div className={styles.heroMedia}>
